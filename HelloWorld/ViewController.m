@@ -27,7 +27,7 @@
 }
 
 - (IBAction)button1OnDown:(id)sender {
-    label1.text = @"hoge";
+    label1.text = text1.text;
 }
 
 @end

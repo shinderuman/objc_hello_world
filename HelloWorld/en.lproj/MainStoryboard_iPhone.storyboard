@@ -30,18 +30,28 @@
                                     <action selector="button1OnDown:" destination="2" eventType="touchDown" id="GD1-tn-9qI"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ここに文字を入力" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gtw-Dk-ecx">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="158" id="VbE-za-MmN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jqj-cP-aUH" firstAttribute="top" secondItem="3" secondAttribute="top" constant="94" id="9Cw-Na-p4v"/>
-                            <constraint firstItem="Jqj-cP-aUH" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="GhZ-Bn-hFY"/>
                             <constraint firstItem="Jqj-cP-aUH" firstAttribute="centerX" secondItem="18y-9X-eXL" secondAttribute="centerX" type="default" id="Pcq-Ie-yBD"/>
-                            <constraint firstItem="18y-9X-eXL" firstAttribute="top" secondItem="3" secondAttribute="top" constant="263" id="TZp-Ez-a1O"/>
+                            <constraint firstItem="gtw-Dk-ecx" firstAttribute="centerX" secondItem="Jqj-cP-aUH" secondAttribute="centerX" type="default" id="Whl-hg-2k7"/>
+                            <constraint firstItem="gtw-Dk-ecx" firstAttribute="top" secondItem="3" secondAttribute="top" constant="35" id="d3k-Tz-vrE"/>
+                            <constraint firstItem="18y-9X-eXL" firstAttribute="top" secondItem="3" secondAttribute="top" constant="165" id="rfe-aM-qE2"/>
+                            <constraint firstItem="18y-9X-eXL" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="zzV-7H-hHw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="button1" destination="Jqj-cP-aUH" id="1Z3-pG-spT"/>
                         <outlet property="label1" destination="18y-9X-eXL" id="rEK-6Y-4X2"/>
+                        <outlet property="text1" destination="gtw-Dk-ecx" id="v52-Vg-dZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -58,6 +68,7 @@
                 <relationship kind="action" name="button1OnDown:"/>
                 <relationship kind="outlet" name="button1" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="label1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="text1" candidateClass="UITextField"/>
             </relationships>
         </class>
     </classes>

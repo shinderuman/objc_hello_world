@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController {
     IBOutlet UIButton *button1;
     IBOutlet UILabel *label1;
+    IBOutlet UITextField *text1;
 }
 
 - (IBAction)button1OnDown:(id)sender;
