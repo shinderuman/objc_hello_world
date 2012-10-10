@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController {
-    IBOutlet UIButton *button1;
-    IBOutlet UILabel *label1;
-    IBOutlet UITextField *text1;
+    UITableView *twitterTable;
+    UIActivityIndicatorView *activityIndicator;
+    NSMutableArray *twitterList;
 }
 
-- (IBAction)button1OnDown:(id)sender;
+@property (nonatomic,retain) IBOutlet UITableView *twitterTable;
+@property (nonatomic,retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+- (IBAction) getTweet;
 
 @end

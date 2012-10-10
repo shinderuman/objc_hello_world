@@ -14,10 +14,17 @@
 
 @implementation ViewController
 
+@synthesize twitterTable, activityIndicator;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    [activityIndicator stopAnimating];
+    [activityIndicator setHidden:TRUE];
+    
+    // 空の配列を用意
+    twitterList = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,8 +33,51 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)button1OnDown:(id)sender {
-    label1.text = text1.text;
+- (IBAction)getTweet {
+    [activityIndicator startAnimating];
+    [activityIndicator setHidden:FALSE];
+
+    NSURL *url = [NSURL URLWithString:@"http://api.twitter.com/1/statuses/user_timeline.json?screen_name=masason"];
+    NSString *jsonSring = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    NSData *jsonData = [jsonSring dataUsingEncoding:NSUTF8StringEncoding];;
+    NSArray *list = [NSJSONSerialization JSONObjectWithData: jsonData options: nil error:nil];
+    
+    for(NSDictionary *item in list) {
+        [twitterList addObject:[item objectForKey:@"text"]];
+    }
+    
+    [activityIndicator stopAnimating];
+    [activityIndicator setHidden:TRUE];
+    
+    [twitterTable reloadData];
+}
+
+// セルの数を設定
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [twitterList count];
+}
+
+// テーブルセルの内容を設定
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    NSString *item = [twitterList objectAtIndex:indexPath.row];
+    // アプリ名を設定
+    cell.textLabel.text = item;
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
 @end
