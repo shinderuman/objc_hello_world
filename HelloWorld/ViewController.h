@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    IBOutlet UIButton *button1;
+    IBOutlet UILabel *label1;
+}
+
+- (IBAction)button1OnDown:(id)sender;
 
 @end
